@@ -45,6 +45,7 @@ fplot(f)
 xlim([-3,3])
 % Next plot command will erase previous plots
 hold off
+legend( 'Approximation', 'Sawtooth Function')
 ```
 ![Sawtooth function and second order approximation by Fourier Series](sawtooth_and_approx2nd.png)
 
