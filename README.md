@@ -84,6 +84,17 @@ fclose(fid)
 
 - Now, there's Fourier Coefficients up to order 10 and the original function in a file for later use in the app.
 
+# Implemented Functions
+## Sawtooth 1
+
+## Sawtooth 2
+![Sawtooth #2](sawtooth_2.png)
+```
+f = triangularPulse(-1,1,1,x+1)  + triangularPulse(-1,1,1,x-1) + triangularPulse(-1,1,1,x-3) + triangularPulse(-1,1,1,x+3) + triangularPulse(-1,1,1,x+5)- .5
+```
+
+## Rectangular 1
+
 # Acknowledgements 
 
 Basic Idea:  https://www3.nd.edu/~nancy/Math30650/Matlab/Demos/fourier_series/fourier_series.html
