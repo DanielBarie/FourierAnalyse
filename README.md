@@ -50,10 +50,11 @@ hold off
 
 - Pre-compute Fourier Coefficients up to order 10:
 ```
+% Compute a coefficients
 for R = 0:10
  saegezahn_a(R+1) = a(f,x,R,1); 
 end
-
+% Compute b coefficients
 for R = 0:10
  saegezahn_b(R+1) = b(f,x,R,1); 
 end
@@ -77,8 +78,8 @@ end
 fclose(fid)
 ```
 
-- Now, there's Fourier Coefficients up to order 10 in a file for later use in the app.
-- 
+- Now, there's Fourier Coefficients up to order 10 and the original function in a file for later use in the app.
+
 # Acknowledgements 
 
 Basic Idea:  https://www3.nd.edu/~nancy/Math30650/Matlab/Demos/fourier_series/fourier_series.html
