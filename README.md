@@ -1,7 +1,8 @@
 # Fourier Analysis
 Fourier Analysis Matlab Demo App.  
 
-![Matlab Fourier Analysis Demo App Screenshot](matlab_app.png)
+![Matlab Fourier Analysis Demo App Screenshot](matlab_app.png)  
+
 Built with App Designer, Symbolic Math Toolbox.  
 Because of limitations regarding redistribution of code/functionality contained in the Symbolic Math Toolbox it doesn't do coefficient calculation in real time. Workig around the limitations lead to pre-calculated Fourier Coefficients being used.   
 Since this is more of a teaching tool that limitation is not a deal breaker. But you should be aware of it.  
