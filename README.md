@@ -16,7 +16,10 @@ evalin(symengine,'assume(k,Type::Integer)');
 ```
 % Triangular Puse Train
 f= triangularPulse(-1,1,1,x)  + triangularPulse(-1,1,1,x-2) + triangularPulse(-1,1,1,x-4) + triangularPulse(-1,1,1,x+2) + triangularPulse(-1,1,1,x+4)- .5
+% Save function to Matlab file for later use in the app:
+matlabFunction(f,'File','saegezahn')
 ```
+
 - Define functions for symbolic coefficient calculation: 
 ```
 % a coefficients (cosine)
@@ -45,6 +48,37 @@ hold off
 ```
 ![Sawtooth function and second order approximation by Fourier Series](sawtooth_and_approx2nd.png)
 
+- Pre-compute Fourier Coefficients up to order 10:
+```
+for R = 0:10
+ saegezahn_a(R+1) = a(f,x,R,1); 
+end
+
+for R = 0:10
+ saegezahn_b(R+1) = b(f,x,R,1); 
+end
+% Save to Matlab function file ('.m')
+matlabFunction(saegezahn_b,'File','koeff_saegezahn_b')
+matlabFunction(saegezahn_a,'File','koeff_saegezahn_a')
+```
+
+- Save Latex string for later display in app:
+```
+% oder anders als ein koeffizient pro zeile
+fid = fopen('saegezahn_b_lstr.txt','wt');
+for R=1:11
+  fprintf(fid, '%s \n', latex(saegezahn_b(R)))
+end
+fclose(fid)
+fid = fopen('saegezahn_a_lstr.txt','wt');
+for R=1:11
+  fprintf(fid, '%s \n', latex(saegezahn_a(R)))
+end
+fclose(fid)
+```
+
+- Now, there's Fourier Coefficients up to order 10 in a file for later use in the app.
+- 
 # Acknowledgements 
 
 Basic Idea:  https://www3.nd.edu/~nancy/Math30650/Matlab/Demos/fourier_series/fourier_series.html
