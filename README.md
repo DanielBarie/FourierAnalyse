@@ -86,7 +86,10 @@ fclose(fid)
 
 # Implemented Functions
 ## Sawtooth 1
-
+![Sawtooth #1](sawtooth_1.png)
+```
+f = triangularPulse(-1,1,1,x)  + triangularPulse(-1,1,1,x-2) + triangularPulse(-1,1,1,x-4) + triangularPulse(-1,1,1,x+2) + triangularPulse(-1,1,1,x+4)- .5
+```
 ## Sawtooth 2
 ![Sawtooth #2](sawtooth_2.png)
 ```
