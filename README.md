@@ -90,13 +90,21 @@ fclose(fid)
 ```
 f = triangularPulse(-1,1,1,x)  + triangularPulse(-1,1,1,x-2) + triangularPulse(-1,1,1,x-4) + triangularPulse(-1,1,1,x+2) + triangularPulse(-1,1,1,x+4)- .5
 ```
+Period is 2.
+
 ## Sawtooth 2
 ![Sawtooth #2](sawtooth_2.png)
 ```
 f = triangularPulse(-1,1,1,x+1)  + triangularPulse(-1,1,1,x-1) + triangularPulse(-1,1,1,x-3) + triangularPulse(-1,1,1,x+3) + triangularPulse(-1,1,1,x+5)- .5
 ```
+Period is 2.
 
 ## Rectangular 1
+![Rectangular Pulse Train #1](rectangular_1.png)
+```
+f = rectangularPulse(-1,1,x)  + rectangularPulse(-1,1,x-3) + rectangularPulse(-1,1,x+3) -.5
+```
+Period is 3.
 
 # Acknowledgements 
 
