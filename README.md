@@ -29,10 +29,19 @@ matlabFunction(f,'File','saegezahn')
 a = @(f,x,k,L) int(f*cos(k*pi*x/L)/L,x,-L,L);
 % b coefficients (sine)
 b = @(f,x,k,L) int(f*sin(k*pi*x/L)/L,x,-L,L);
+% complex coefficients
+c = @(f,x,k,L) 1/(2*L) * int( f * exp(-j*2*pi*k*x/(2*L))  , x,-L,L);
 ```
 - Define symbolic sum (n-th order) approximating the original function (sawtooth pulse train):
 ```
+% fs is computation via coefficients a and b
 fs = @(f,x,n,L) a(f,x,0,L)/2 + symsum(a(f,x,k,L)*cos(k*pi*x/L) + b(f,x,k,L)*sin(k*pi*x/L),k,1,n);
+% fc is computation via complex coefficients
+% this is not als slick as it could be 
+% symsum will fail at k=0 when running k from -n..+n
+% so we split the computation into three parts (negative, zero, positive)
+fc = @(f,x,n,L) symsum( c(f,x,k,L)* exp(j*k*2*pi*x/(2*L)) ,k,1,n)+ symsum( c(f,x,k,L)* exp(j*k*2*pi*x/(2*L)) ,k,-n,-1) + c(f,x,0,L)*exp(j*0*2*pi*x/(2*L));
+
 ```
 
 - Do a quick check of the computations:
@@ -62,9 +71,15 @@ end
 for R = 0:10
  saegezahn_b(R+1) = b(f,x,R,1); 
 end
+% compute complex coefficients
+for R = 0:10
+ saegezahn_c(R+1) = c(f,x,R,1); 
+end
+
 % Save to Matlab function file ('.m')
 matlabFunction(saegezahn_b,'File','koeff_saegezahn_b')
 matlabFunction(saegezahn_a,'File','koeff_saegezahn_a')
+matlabFunction(saegezahn_c,'File','koeff_saegezahn_c')
 ```
 
 - Save Latex string for later display in app:
@@ -80,9 +95,15 @@ for R=1:11
   fprintf(fid, '%s \n', latex(saegezahn_a(R)))
 end
 fclose(fid)
+fid = fopen('saegezahn_c_lstr.txt','wt');
+for R=1:11
+  fprintf(fid, '%s \n', latex(saegezahn_c(R)))
+end
+fclose(fid)
+
 ```
 
-- Now, there's Fourier Coefficients up to order 10 and the original function in a file for later use in the app.
+- Now, there's Fourier Coefficients (real and complex) up to order 10 and the original function in a file for later use in the app.
 
 # Implemented Functions
 ## Sawtooth 1
