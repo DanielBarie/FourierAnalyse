@@ -1,5 +1,5 @@
-# Fourier Analysis
-Fourier Analysis Matlab Demo App.  
+# Fourier Synthesis
+Fourier Synthesis Matlab Demo App.  
 
 ![Matlab Fourier Analysis Demo App Screenshot](matlab_app.png)  
 
