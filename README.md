@@ -87,17 +87,17 @@ matlabFunction(saegezahn_c,'File','koeff_saegezahn_c')
 % oder anders als ein koeffizient pro zeile
 fid = fopen('saegezahn_b_lstr.txt','wt');
 for R=1:11
-  fprintf(fid, '%s \n', latex(saegezahn_b(R)))
+  fprintf(fid, '%s \n', latex(saegezahn_b(R)));
 end
 fclose(fid)
 fid = fopen('saegezahn_a_lstr.txt','wt');
 for R=1:11
-  fprintf(fid, '%s \n', latex(saegezahn_a(R)))
+  fprintf(fid, '%s \n', latex(saegezahn_a(R)));
 end
 fclose(fid)
 fid = fopen('saegezahn_c_lstr.txt','wt');
 for R=1:11
-  fprintf(fid, '%s \n', latex(saegezahn_c(R)))
+  fprintf(fid, '%s \n', latex(saegezahn_c(R)));
 end
 fclose(fid)
 
