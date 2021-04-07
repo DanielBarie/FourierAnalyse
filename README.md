@@ -4,7 +4,7 @@ Fourier Synthesis Matlab Demo App.
 ![Matlab Fourier Analysis Demo App Screenshot](matlab_app.png)  
 
 Built with App Designer, Symbolic Math Toolbox.  
-Because of limitations regarding redistribution of code/functionality contained in the Symbolic Math Toolbox it doesn't do coefficient calculation in real time. Workig around the limitations lead to pre-calculated Fourier Coefficients being used.   
+Because of limitations regarding redistribution of code/functionality contained in the Symbolic Math Toolbox it doesn't do coefficient calculation in real time. Working around the limitations leads to pre-calculated Fourier Coefficients being used. So we need to pre-calculate the coefficients (see steps below).  
 Since this is more of a teaching tool that limitation is not a deal breaker. But you should be aware of it.  
 We're doing signals (and systems), that's why there is no units (at least on the y-axis). Imagine this being some voltage having been normalized to a maximum amplitude of "1".
 
@@ -84,23 +84,27 @@ matlabFunction(saegezahn_c,'File','koeff_saegezahn_c')
 
 - Save Latex string for later display in app:
 ```
-% oder anders als ein koeffizient pro zeile
-fid = fopen('saegezahn_b_lstr.txt','wt');
-for R=1:11
-  fprintf(fid, '%s \n', latex(saegezahn_b(R)));
-end
-fclose(fid)
+% one coefficient per line
+% a coefficients
 fid = fopen('saegezahn_a_lstr.txt','wt');
 for R=1:11
   fprintf(fid, '%s \n', latex(saegezahn_a(R)));
 end
 fclose(fid)
+
+% b coefficients
+fid = fopen('saegezahn_b_lstr.txt','wt');
+for R=1:11
+  fprintf(fid, '%s \n', latex(saegezahn_b(R)));
+end
+fclose(fid)
+
+% complex coefficients
 fid = fopen('saegezahn_c_lstr.txt','wt');
 for R=1:11
   fprintf(fid, '%s \n', latex(saegezahn_c(R)));
 end
 fclose(fid)
-
 ```
 
 - Now, there's Fourier Coefficients (real and complex) up to order 10 and the original function in a file for later use in the app.
