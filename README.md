@@ -129,7 +129,7 @@ Period is 2.
 ```
 f = rectangularPulse(-1,1,x)  + rectangularPulse(-1,1,x-3) + rectangularPulse(-1,1,x+3) -.5
 ```
-Period is 3.
+Period is 3. So: When computing fourier coefficients for this one you must set `L=1.5`.
 
 # Acknowledgements 
 
